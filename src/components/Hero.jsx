@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 const FULL_TEXT = "Hi, I'm Ben.";
-const PAUSE_AFTER = "Hi,";
-const PAUSE_DURATION = 600; // ms to pause after "Hi,"
-const TYPE_SPEED = 80;      // ms per character
+const PAUSE_LOCATIONS = [2,11]; // Pause character locations
+const PAUSE_DURATION = 1200; // ms to pause for
+const TYPE_SPEED = 125;      // ms per character
 
 export default function Hero() {
   const [displayed, setDisplayed] = useState('');
@@ -14,13 +14,15 @@ export default function Hero() {
     let cancelled = false;
 
     async function type() {
+      await wait(PAUSE_DURATION); // Initial delay before typing starts
+
       for (let i = 1; i <= FULL_TEXT.length; i++) {
         if (cancelled) return;
 
         const chunk = FULL_TEXT.slice(0, i);
         setDisplayed(chunk);
 
-        if (chunk === PAUSE_AFTER) {
+        if (PAUSE_LOCATIONS.includes(i)) {
           await wait(PAUSE_DURATION);
         } else {
           await wait(TYPE_SPEED);
@@ -34,14 +36,9 @@ export default function Hero() {
     return () => { cancelled = true; };
   }, []);
 
-  // Cursor blinks while typing, stays solid once done
+  // Cursor blinks continuously
   useEffect(() => {
     const blink = setInterval(() => {
-      if (doneRef.current) {
-        clearInterval(blink);
-        setCursorVisible(true);
-        return;
-      }
       setCursorVisible((v) => !v);
     }, 530);
     return () => clearInterval(blink);
