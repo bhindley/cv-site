@@ -242,8 +242,39 @@ section {
   text-transform: uppercase;
 }
 
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.hero-icon-link:hover {
+  border-color: var(--green-light);
+  color: var(--green-light);
+  text-decoration: none;
+}
+
+.hero-icon-link svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+}
+
 .hero-scroll {
-  margin-top: 2.5rem;
+  margin-top: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
