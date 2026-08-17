@@ -10,20 +10,20 @@ export default function Contact() {
 
     setStatus('sending');
 
-    fetch('https://formspree.io/f/placeholder', {
-      method: 'POST',
+    fetch("https://formspree.io/f/xyegnbjp", {
+      method: "POST",
       body: data,
-      headers: { Accept: 'application/json' },
+      headers: { Accept: "application/json" },
     })
       .then((res) => {
         if (res.ok) {
-          setStatus('sent');
+          setStatus("sent");
           form.reset();
         } else {
-          setStatus('error');
+          setStatus("error");
         }
       })
-      .catch(() => setStatus('error'));
+      .catch(() => setStatus("error"));
   }
 
   return (
