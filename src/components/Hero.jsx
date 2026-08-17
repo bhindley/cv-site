@@ -6,6 +6,102 @@ const PAUSE_DURATION = 1200; // ms to pause for
 const TYPE_SPEED = 125;      // ms per character
 const CURSOR_BLINK_INTERVAL = 530; // ms for cursor blink
 
+// Particle config
+const PARTICLE_COUNT = 80;
+const PARTICLE_COLOR_LIGHT = '46, 125, 50';   // --green in light/dark hero context
+const PARTICLE_COLOR_DARK  = '102, 187, 106';  // brighter on dark bg
+const CONNECTION_DISTANCE = 140;
+const SPEED = 0.35;
+
+function ParticleCanvas() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let animId;
+    let particles = [];
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
+    function isDark() {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') return true;
+      if (stored === 'light') return false;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function spawn() {
+      particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+        x:  Math.random() * canvas.width,
+        y:  Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * SPEED * 2,
+        vy: (Math.random() - 0.5) * SPEED * 2,
+        r:  Math.random() * 1.5 + 0.8,
+      }));
+    }
+
+    function draw() {
+      const color = isDark() ? PARTICLE_COLOR_DARK : PARTICLE_COLOR_LIGHT;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Move
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      }
+
+      // Connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DISTANCE) {
+            const alpha = (1 - dist / CONNECTION_DISTANCE) * 0.35;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+            ctx.lineWidth = 0.7;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Dots
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${color}, 0.7)`;
+        ctx.fill();
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    resize();
+    spawn();
+    draw();
+
+    const ro = new ResizeObserver(() => { resize(); spawn(); });
+    ro.observe(canvas);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      ro.disconnect();
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />;
+}
+
 export default function Hero() {
   const [displayed, setDisplayed] = useState('');
   const [cursorVisible, setCursorVisible] = useState(true);
@@ -47,7 +143,7 @@ export default function Hero() {
 
   return (
     <div className="hero" role="banner">
-      <div className="hero-overlay" />
+      <ParticleCanvas />
       <div className="hero-content">
         <h1 className="hero-heading">
           {displayed}
