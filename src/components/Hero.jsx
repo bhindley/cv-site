@@ -8,7 +8,6 @@ const TYPE_SPEED = 80;      // ms per character
 export default function Hero() {
   const [displayed, setDisplayed] = useState('');
   const [cursorVisible, setCursorVisible] = useState(true);
-  const [cursorGone, setCursorGone] = useState(false);
   const doneRef = useRef(false);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ export default function Hero() {
         const chunk = FULL_TEXT.slice(0, i);
         setDisplayed(chunk);
 
-        // Pause after "Hi," before continuing
         if (chunk === PAUSE_AFTER) {
           await wait(PAUSE_DURATION);
         } else {
@@ -36,12 +34,12 @@ export default function Hero() {
     return () => { cancelled = true; };
   }, []);
 
-  // Blinking cursor — fades out ~1.2s after typing finishes
+  // Cursor blinks while typing, stays solid once done
   useEffect(() => {
     const blink = setInterval(() => {
       if (doneRef.current) {
         clearInterval(blink);
-        setTimeout(() => setCursorGone(true), 1200);
+        setCursorVisible(true);
         return;
       }
       setCursorVisible((v) => !v);
@@ -55,15 +53,13 @@ export default function Hero() {
       <div className="hero-content">
         <h1 className="hero-heading">
           {displayed}
-          {!cursorGone && (
-            <span
-              className="hero-cursor"
-              style={{ opacity: cursorVisible ? 1 : 0 }}
-              aria-hidden="true"
-            >
-              |
-            </span>
-          )}
+          <span
+            className="hero-cursor"
+            style={{ opacity: cursorVisible ? 1 : 0 }}
+            aria-hidden="true"
+          >
+            |
+          </span>
         </h1>
         <p className="hero-sub">Software Engineer</p>
         <a href="#about" className="hero-scroll" aria-label="Scroll to content">
