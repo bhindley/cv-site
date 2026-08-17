@@ -7,7 +7,7 @@ const TYPE_SPEED = 125;      // ms per character
 const CURSOR_BLINK_INTERVAL = 530; // ms for cursor blink
 
 // Particle config
-const PARTICLE_COUNT = 80;
+const PARTICLE_DENSITY = 0.00004; // particles per px² — scales with canvas size
 const PARTICLE_COLOR_LIGHT = '46, 125, 50';   // --green in light/dark hero context
 const PARTICLE_COLOR_DARK  = '102, 187, 106';  // brighter on dark bg
 const CONNECTION_DISTANCE = 140;
@@ -35,7 +35,7 @@ function ParticleCanvas() {
     }
 
     function spawn() {
-      particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+      particles = Array.from({ length: Math.round(canvas.width * canvas.height * PARTICLE_DENSITY) }, () => ({
         x:  Math.random() * canvas.width,
         y:  Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * SPEED * 2,
