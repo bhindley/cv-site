@@ -1,32 +1,42 @@
 import { useEffect, useRef, useState } from 'react';
 
-const TYPED_TEXT = "Hi, I'm Ben.";
-const TYPE_SPEED = 80; // ms per character
+const FULL_TEXT = "Hi, I'm Ben.";
+const PAUSE_AFTER = "Hi,";
+const PAUSE_DURATION = 600; // ms to pause after "Hi,"
+const TYPE_SPEED = 80;      // ms per character
 
 export default function Hero() {
   const [displayed, setDisplayed] = useState('');
   const [cursorVisible, setCursorVisible] = useState(true);
-  const indexRef = useRef(0);
+  const [cursorGone, setCursorGone] = useState(false);
   const doneRef = useRef(false);
 
-  // Typing effect
   useEffect(() => {
-    if (indexRef.current >= TYPED_TEXT.length) return;
+    let cancelled = false;
 
-    const timer = setInterval(() => {
-      indexRef.current += 1;
-      setDisplayed(TYPED_TEXT.slice(0, indexRef.current));
-      if (indexRef.current >= TYPED_TEXT.length) {
-        clearInterval(timer);
-        doneRef.current = true;
+    async function type() {
+      for (let i = 1; i <= FULL_TEXT.length; i++) {
+        if (cancelled) return;
+
+        const chunk = FULL_TEXT.slice(0, i);
+        setDisplayed(chunk);
+
+        // Pause after "Hi," before continuing
+        if (chunk === PAUSE_AFTER) {
+          await wait(PAUSE_DURATION);
+        } else {
+          await wait(TYPE_SPEED);
+        }
       }
-    }, TYPE_SPEED);
 
-    return () => clearInterval(timer);
+      doneRef.current = true;
+    }
+
+    type();
+    return () => { cancelled = true; };
   }, []);
 
-  // Blinking cursor — stops blinking once typing is done and fades out after 2s
-  const [cursorGone, setCursorGone] = useState(false);
+  // Blinking cursor — fades out ~1.2s after typing finishes
   useEffect(() => {
     const blink = setInterval(() => {
       if (doneRef.current) {
@@ -64,4 +74,8 @@ export default function Hero() {
       </div>
     </div>
   );
+}
+
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
