@@ -7,8 +7,8 @@ const TYPE_SPEED = 125;      // ms per character
 const CURSOR_BLINK_INTERVAL = 530; // ms for cursor blink
 
 // Particle config
-const PARTICLE_DENSITY = 0.00004; // particles per px² — scales with canvas size
-const PARTICLE_COLOR_LIGHT = '46, 125, 50';   // --green in light/dark hero context
+const PARTICLE_DENSITY = 0.0001; // particles per px^2 - scales with canvas size
+const PARTICLE_COLOR_LIGHT = '46, 125, 50';   // green in light/dark hero context
 const PARTICLE_COLOR_DARK  = '102, 187, 106';  // brighter on dark bg
 const CONNECTION_DISTANCE = 140;
 const SPEED = 0.35;
