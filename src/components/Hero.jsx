@@ -60,13 +60,13 @@ export default function Hero() {
           </span>
         </h1>
         <p className="hero-sub">Software Engineer</p>
-      </div>
-      <div className="hero-bottom">
         <a href="#about" className="hero-scroll" aria-label="Scroll to content">
           <svg viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true">
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </a>
+      </div>
+      <div className="hero-bottom">
         <div className="hero-links">
           <a
             href="https://github.com/bhindley"
