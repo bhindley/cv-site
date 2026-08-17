@@ -37,9 +37,13 @@ export default function Contact() {
         .
       </p>
 
-      {status === 'sent' ? (
-        <p className="contact-success">Message sent. I will get back to you soon.</p>
-      ) : (
+      <div aria-live="polite" aria-atomic="true">
+        {status === 'sent' && (
+          <p className="contact-success">Message sent. I will get back to you soon.</p>
+        )}
+      </div>
+
+      {status !== 'sent' && (
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <div className="form-row">
             <div className="form-group">
@@ -75,9 +79,11 @@ export default function Contact() {
               required
             />
           </div>
-          {status === 'error' && (
-            <p className="contact-error">Something went wrong. Please try again.</p>
-          )}
+          <div aria-live="assertive" aria-atomic="true">
+            {status === 'error' && (
+              <p className="contact-error">Something went wrong. Please try again.</p>
+            )}
+          </div>
           <button type="submit" className="btn-submit" disabled={status === 'sending'}>
             {status === 'sending' ? 'Sending...' : 'Send message'}
           </button>

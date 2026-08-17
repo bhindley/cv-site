@@ -13,6 +13,10 @@ const PARTICLE_COLOR_DARK  = '102, 187, 106';  // brighter on dark bg
 const CONNECTION_DISTANCE = 140;
 const SPEED = 0.35;
 
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function ParticleCanvas() {
   const canvasRef = useRef(null);
 
@@ -28,9 +32,9 @@ function ParticleCanvas() {
     }
 
     function isDark() {
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') return true;
-      if (stored === 'light') return false;
+      const theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') return true;
+      if (theme === 'light') return false;
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
@@ -142,11 +146,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="hero" role="banner">
+    <div className="hero">
       <ParticleCanvas />
       <div className="hero-content">
-        <h1 className="hero-heading">
-          {displayed}
+        <p className="hero-heading" aria-label={FULL_TEXT}>
+          <span aria-hidden="true">{displayed}</span>
           <span
             className="hero-cursor"
             style={{ opacity: cursorVisible ? 1 : 0 }}
@@ -154,7 +158,7 @@ export default function Hero() {
           >
             |
           </span>
-        </h1>
+        </p>
         <p className="hero-sub">Software Engineer</p>
         <a href="#about" className="hero-scroll" aria-label="Scroll to content">
           <svg viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true">
@@ -192,8 +196,4 @@ export default function Hero() {
       </div>
     </div>
   );
-}
-
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }

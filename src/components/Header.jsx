@@ -6,7 +6,7 @@ export default function Header() {
           <div>
             <h1 className="header-name">Benjamin Hindley</h1>
             <p className="header-title">Software Engineer</p>
-            <nav className="header-contact">
+            <address className="header-contact">
               <span className="header-location">
                 <svg viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -28,7 +28,7 @@ export default function Header() {
                 </svg>
                 www.linkedin.com/in/benjamin-hindley-b07b95253
               </a>
-            </nav>
+            </address>
           </div>
         </div>
       </div>

@@ -1,12 +1,9 @@
 const education = [
   {
-    degree: 'Bachelor of Science (Honours) in Software Engineering: 2:1.',
+    degree: 'BSc (Hons) Software Engineering',
     institution: 'Manchester Metropolitan University',
     location: 'Manchester, UK',
     date: 'Sep. 2022 – Jul. 2025',
-    bullets: [
-      <>Selected for the UK Government&rsquo;s <strong>highly competitive CyberFirst Bursary programme</strong>, recognising strong aptitude and potential in cyber security.</>,
-    ],
   },
 ];
 

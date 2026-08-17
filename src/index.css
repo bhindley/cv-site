@@ -737,7 +737,8 @@ section {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: none;
+  outline: 2px solid var(--input-focus);
+  outline-offset: 1px;
   border-color: var(--input-focus);
 }
 

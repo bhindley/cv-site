@@ -1,19 +1,27 @@
 const skillGroups = [
   {
     label: 'Languages',
-    items: ['Python', 'C#', 'JS/TS', 'Go', 'C++', 'Java', 'HTML'],
+    items: ['Python', 'C#', 'JavaScript', 'TypeScript', 'Go', 'C++', 'Java', 'HTML', 'CSS', 'SQL'],
   },
   {
     label: 'DevOps & Tools',
-    items: ['Docker / Docker Compose', 'AWS', 'Jenkins', 'Git', 'Postman'],
+    items: ['Docker', 'AWS', 'Jenkins', 'Git', 'Postman'],
   },
   {
-    label: 'Frameworks',
-    items: ['WPF', 'Express', 'Vue', 'Flask', 'Blazor', 'Gin'],
+    label: 'Frontend Frameworks',
+    items: ['WPF', 'Vue', 'React', 'Blazor'],
   },
   {
-    label: 'Other',
-    items: ['Test Automation', 'Linux', 'Embedded Hardware', 'UI/UX'],
+    label: 'Backend Frameworks',
+    items: ['Node.js', 'Express', 'Gin', 'Flask', 'ASP.NET Core'],
+  },
+  {
+    label: 'Embedded, IoT & Telemetry',
+    items: ['ESP32', 'Arduino', 'Raspberry Pi', 'Embedded C++', 'MQTT', 'I2C', 'SPI'],
+  },
+  {
+    label: 'General Skills',
+    items: ['Project Management', 'Scrum', 'Test Automation', 'Linux', 'UI/UX'],
   },
 ];
 
