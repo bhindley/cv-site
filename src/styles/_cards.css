@@ -1,0 +1,82 @@
+/* =============================================
+   Experience & Education Cards
+   ============================================= */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.card {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: 2px;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.card-date {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.card-subtitle-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--green);
+}
+
+.card-location {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.card-body {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.card-body ul {
+  padding-left: 1.1rem;
+}
+
+.card-body ul li {
+  position: relative;
+  padding-left: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.card-body ul li::before {
+  content: '-';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}

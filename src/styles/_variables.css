@@ -1,0 +1,92 @@
+/* =============================================
+   CSS Custom Properties — Light (default)
+   ============================================= */
+
+:root {
+  --green: #2e7d32;
+  --green-light: #43a047;
+  --green-faint: #e8f5e9;
+
+  --bg: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #555555;
+  --link: #2e7d32;
+  --link-hover: #1b5e20;
+  --tag-bg: #e8f5e9;
+  --tag-text: #1b5e20;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --input-focus: #2e7d32;
+}
+
+/* Dark via system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --green: #66bb6a;
+    --green-light: #81c784;
+    --green-faint: #1b2e1c;
+
+    --bg: #121212;
+    --bg-secondary: #1e1e1e;
+    --border: #2e2e2e;
+    --text: #e8e8e8;
+    --text-muted: #999999;
+    --link: #66bb6a;
+    --link-hover: #a5d6a7;
+    --tag-bg: #1b2e1c;
+    --tag-text: #a5d6a7;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    --input-bg: #1e1e1e;
+    --input-border: #3a3a3a;
+    --input-focus: #66bb6a;
+  }
+}
+
+/* Dark forced via toggle */
+[data-theme="dark"] {
+  --green: #66bb6a;
+  --green-light: #81c784;
+  --green-faint: #1b2e1c;
+
+  --bg: #121212;
+  --bg-secondary: #1e1e1e;
+  --border: #2e2e2e;
+  --text: #e8e8e8;
+  --text-muted: #999999;
+  --link: #66bb6a;
+  --link-hover: #a5d6a7;
+  --tag-bg: #1b2e1c;
+  --tag-text: #a5d6a7;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+  --input-bg: #1e1e1e;
+  --input-border: #3a3a3a;
+  --input-focus: #66bb6a;
+}
+
+/* Light forced via toggle */
+[data-theme="light"] {
+  --green: #2e7d32;
+  --green-light: #43a047;
+  --green-faint: #e8f5e9;
+
+  --bg: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #555555;
+  --link: #2e7d32;
+  --link-hover: #1b5e20;
+  --tag-bg: #e8f5e9;
+  --tag-text: #1b5e20;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --input-focus: #2e7d32;
+}

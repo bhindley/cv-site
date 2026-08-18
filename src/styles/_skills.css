@@ -1,0 +1,34 @@
+/* =============================================
+   Skills
+   ============================================= */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-group h3 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'Consolas', 'Courier New', monospace;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-item {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.55rem;
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--green-faint);
+  border-radius: 2px;
+  font-family: 'Consolas', 'Courier New', monospace;
+}

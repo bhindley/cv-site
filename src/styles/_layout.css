@@ -1,0 +1,33 @@
+/* =============================================
+   Layout
+   ============================================= */
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+main {
+  padding: 3rem 0 5rem;
+}
+
+section {
+  margin-bottom: 3.5rem;
+}
+
+/* =============================================
+   Section Headers
+   ============================================= */
+
+.section-title {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
