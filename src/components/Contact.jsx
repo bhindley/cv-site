@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Contact() {
-  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
 
-    setStatus('sending');
+    setStatus("sending");
 
     fetch("https://formspree.io/f/xyegnbjp", {
       method: "POST",
@@ -30,20 +30,26 @@ export default function Contact() {
     <section id="contact">
       <h2 className="section-title">Contact</h2>
       <p className="contact-intro">
-        Get in touch via the form below or connect on{' '}
-        <a href="https://www.linkedin.com/in/benjamin-hindley-b07b95253" target="_blank" rel="noreferrer">
+        Get in touch via the form below or connect on{" "}
+        <a
+          href="https://www.linkedin.com/in/benjamin-hindley-b07b95253"
+          target="_blank"
+          rel="noreferrer"
+        >
           LinkedIn
         </a>
         .
       </p>
 
       <div aria-live="polite" aria-atomic="true">
-        {status === 'sent' && (
-          <p className="contact-success">Message sent. I will get back to you soon.</p>
+        {status === "sent" && (
+          <p className="contact-success">
+            Message sent. I will get back to you soon.
+          </p>
         )}
       </div>
 
-      {status !== 'sent' && (
+      {status !== "sent" && (
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <div className="form-row">
             <div className="form-group">
@@ -80,12 +86,18 @@ export default function Contact() {
             />
           </div>
           <div aria-live="assertive" aria-atomic="true">
-            {status === 'error' && (
-              <p className="contact-error">Something went wrong. Please try again.</p>
+            {status === "error" && (
+              <p className="contact-error">
+                Something went wrong. Please try again.
+              </p>
             )}
           </div>
-          <button type="submit" className="btn-submit" disabled={status === 'sending'}>
-            {status === 'sending' ? 'Sending...' : 'Send message'}
+          <button
+            type="submit"
+            className="btn-submit"
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? "Sending..." : "Send message"}
           </button>
         </form>
       )}

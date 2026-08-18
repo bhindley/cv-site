@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 function getInitialTheme() {
-  const stored = localStorage.getItem('theme');
-  if (stored === 'dark' || stored === 'light') return stored;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const stored = localStorage.getItem("theme");
+  if (stored === "dark" || stored === "light") return stored;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 export default function ThemeToggle() {
@@ -11,26 +13,26 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.setAttribute('data-theme', 'dark');
+    if (theme === "dark") {
+      root.setAttribute("data-theme", "dark");
     } else {
-      root.setAttribute('data-theme', 'light');
+      root.setAttribute("data-theme", "light");
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   function toggle() {
-    setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+    setTheme((t) => (t === "dark" ? "light" : "dark"));
   }
 
   return (
     <button
       className="theme-toggle"
       onClick={toggle}
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
-      {theme === 'dark' ? (
+      {theme === "dark" ? (
         // Sun icon
         <svg viewBox="0 0 24 24" strokeWidth="1.75" aria-hidden="true">
           <circle cx="12" cy="12" r="5" />

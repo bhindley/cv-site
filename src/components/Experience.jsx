@@ -1,21 +1,21 @@
 const jobs = [
   {
-    title: 'Software Engineering Professional',
-    company: 'BT Group',
-    location: 'Manchester, UK',
-    date: 'Sep. 2025 – Present',
+    title: "Software Engineering Professional",
+    company: "BT Group",
+    location: "Manchester, UK",
+    date: "Sep. 2025 – Present",
   },
   {
-    title: 'Summer Intern',
-    company: 'BT Group',
-    location: 'Cheltenham, UK',
-    date: 'Jun. – Sep. 2024',
+    title: "Summer Intern",
+    company: "BT Group",
+    location: "Cheltenham, UK",
+    date: "Jun. – Sep. 2024",
   },
   {
-    title: 'Sales Assistant',
-    company: 'Fjällräven',
-    location: 'Manchester, UK',
-    date: 'PT, Oct. 2024 – Sep. 2025',
+    title: "Sales Assistant",
+    company: "Fjällräven",
+    location: "Manchester, UK",
+    date: "Oct. 2024 – Sep. 2025",
   },
 ];
 

@@ -1,12 +1,30 @@
 const projects = [
   {
-    name: 'Weatha-Kat',
-    subtitle: 'Embedded Weather Monitoring Ecosystem',
+    name: "Weatha-Kat",
+    subtitle: "Embedded Weather Monitoring Ecosystem",
     bullets: [
-      <>Designed and built a multi-device <strong>ESP32</strong> ecosystem from scratch, comprising an outdoor weather station, an indoor display unit, and a minimal gauge – communicating via <strong>MQTT</strong> and HTTP.</>,
-      <>Designed and developed a custom rain detector and weather sensor. Publishes environmental readings to an MQTT broker for consumption by other devices in the ecosystem.</>,
-      <>Developed a custom non-blocking task scheduler to drive concurrent UI rendering, sensor polling, and network communication on <strong>resource-constrained hardware</strong>. Built an interactive configuration system using a rotary encoder and pop-up menu UI, alongside a 24-hour rain graph and expressive bitmap animations.</>,
-      <>Implemented tear-free offscreen rendering with compile-time selectable data sources, enabling the same firmware to target either an MQTT broker or HTTP API without runtime overhead.</>,
+      <>
+        Designed and built a multi-device <strong>ESP32</strong> ecosystem from
+        scratch, comprising an outdoor weather station, an indoor display unit,
+        and a minimal gauge - communicating via <strong>MQTT</strong> and HTTP.
+      </>,
+      <>
+        Designed and developed a custom rain detector and weather sensor.
+        Publishes environmental readings to an MQTT broker for consumption by
+        other devices in the ecosystem.
+      </>,
+      <>
+        Developed a custom non-blocking task scheduler to drive concurrent UI
+        rendering, sensor polling, and network communication on{" "}
+        <strong>resource-constrained hardware</strong>. Built an interactive
+        configuration system using a rotary encoder and pop-up menu UI,
+        alongside a 24-hour rain graph and expressive bitmap animations.
+      </>,
+      <>
+        Implemented tear-free offscreen rendering with compile-time selectable
+        data sources, enabling the same firmware to target either an MQTT broker
+        or HTTP API without runtime overhead.
+      </>,
     ],
   },
 ];

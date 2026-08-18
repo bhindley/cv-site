@@ -5,7 +5,9 @@
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 1.5rem 0;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size: 0.8rem;
   color: var(--text-muted);
   font-family: 'Consolas', 'Courier New', monospace;

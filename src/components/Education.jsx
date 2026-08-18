@@ -1,9 +1,9 @@
 const education = [
   {
-    degree: 'BSc (Hons) Software Engineering',
-    institution: 'Manchester Metropolitan University',
-    location: 'Manchester, UK',
-    date: 'Sep. 2022 – Jul. 2025',
+    degree: "BSc (Hons) Software Engineering",
+    institution: "Manchester Metropolitan University",
+    location: "Manchester, UK",
+    date: "Sep. 2022 – Jul. 2025",
   },
 ];
 

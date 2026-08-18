@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 const FULL_TEXT = "Hi, I'm Ben.";
-const PAUSE_LOCATIONS = [2,11]; // Pause character locations
+const PAUSE_LOCATIONS = [2, 11]; // Pause character locations
 const PAUSE_DURATION = 1200; // ms to pause for
-const TYPE_SPEED = 125;      // ms per character
+const TYPE_SPEED = 125; // ms per character
 const CURSOR_BLINK_INTERVAL = 530; // ms for cursor blink
 
 // Particle config
 const PARTICLE_DENSITY = 0.0001; // particles per px^2 - scales with canvas size
-const PARTICLE_COLOR_LIGHT = '46, 125, 50';   // green in light/dark hero context
-const PARTICLE_COLOR_DARK  = '102, 187, 106';  // brighter on dark bg
-const CONNECTION_DISTANCE = 140;
+const PARTICLE_COLOR_LIGHT = "46, 125, 50"; // green in light/dark hero context
+const PARTICLE_COLOR_DARK = "102, 187, 106"; // brighter on dark bg
+const CONNECTION_DISTANCE = 150;
 const SPEED = 0.35;
 
 function wait(ms) {
@@ -22,30 +22,33 @@ function ParticleCanvas() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animId;
     let particles = [];
 
     function resize() {
-      canvas.width  = canvas.offsetWidth;
+      canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
 
     function isDark() {
-      const theme = document.documentElement.getAttribute('data-theme');
-      if (theme === 'dark') return true;
-      if (theme === 'light') return false;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = document.documentElement.getAttribute("data-theme");
+      if (theme === "dark") return true;
+      if (theme === "light") return false;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
 
     function spawn() {
-      particles = Array.from({ length: Math.round(canvas.width * canvas.height * PARTICLE_DENSITY) }, () => ({
-        x:  Math.random() * canvas.width,
-        y:  Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * SPEED * 2,
-        vy: (Math.random() - 0.5) * SPEED * 2,
-        r:  Math.random() * 1.5 + 0.8,
-      }));
+      particles = Array.from(
+        { length: Math.round(canvas.width * canvas.height * PARTICLE_DENSITY) },
+        () => ({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * SPEED * 2,
+          vy: (Math.random() - 0.5) * SPEED * 2,
+          r: Math.random() * 1.5 + 0.8,
+        }),
+      );
     }
 
     function draw() {
@@ -57,7 +60,7 @@ function ParticleCanvas() {
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
       }
 
@@ -94,7 +97,10 @@ function ParticleCanvas() {
     spawn();
     draw();
 
-    const ro = new ResizeObserver(() => { resize(); spawn(); });
+    const ro = new ResizeObserver(() => {
+      resize();
+      spawn();
+    });
     ro.observe(canvas);
 
     return () => {
@@ -107,7 +113,7 @@ function ParticleCanvas() {
 }
 
 export default function Hero() {
-  const [displayed, setDisplayed] = useState('');
+  const [displayed, setDisplayed] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const doneRef = useRef(false);
 
@@ -134,7 +140,9 @@ export default function Hero() {
     }
 
     type();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Cursor blinks continuously
