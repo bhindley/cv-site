@@ -5,7 +5,7 @@ export default function About() {
       <div className="about-content">
         <p className="about-text">
           Software Engineer building internal tools that replace manual processes and reduce operational overhead.
-          Experienced in delivering full-stack applications, test automation frameworks, and embedded IoT solutions.
+          Experienced in delivering full-stack web applications, test automation frameworks, and embedded IoT solutions.
           Hands-on project experience across backend services, frontend applications, embedded systems, and CI/CD solutions.
         </p>
         <div className="about-divider" aria-hidden="true" />
